@@ -1,22 +1,20 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "GitHub Public Repo Reader",
-    "description": "API do odczytu struktury katalogów i zawartości plików z publicznych repozytoriów GitHub.",
-    "version": "1.0.0"
+    "title": "GitHub Repo Live Reader",
+    "version": "1.0.0",
+    "description": "Daje GPT dostęp do bieżącej struktury i zawartości plików repozytorium GitHub."
   },
   "servers": [
     {
-      "url": "https://api.github.com",
-      "description": "GitHub Public API"
+      "url": "https://api.github.com"
     }
   ],
   "paths": {
     "/repos/{owner}/{repo}/contents/{path}": {
       "get": {
-        "operationId": "getRepoContents",
-        "summary": "Pobiera zawartość folderu lub pliku w repozytorium GitHub",
-        "description": "Zwraca listę plików/folderów lub zawartość pliku (base64).",
+        "operationId": "getFileOrDir",
+        "summary": "Pobiera zawartość katalogu lub pliku",
         "parameters": [
           {
             "name": "owner",
@@ -39,8 +37,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "example": ""
+              "type": "string"
             }
           },
           {
@@ -59,4 +56,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type":
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {}
+}
