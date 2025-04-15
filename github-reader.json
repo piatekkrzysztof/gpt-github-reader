@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.3",
+  "openapi": "3.0.2",
   "info": {
     "title": "GitHub Public Repo Reader",
     "description": "API do odczytu struktury katalogów i zawartości plików z publicznych repozytoriów GitHub.",
@@ -16,7 +16,7 @@
       "get": {
         "operationId": "getRepoContents",
         "summary": "Pobiera zawartość folderu lub pliku w repozytorium GitHub",
-        "description": "Umożliwia pobranie struktury katalogów oraz zawartości plików z publicznego repozytorium GitHub.\nJeśli `path` wskazuje folder – zwracana jest lista plików/folderów.  \nJeśli `path` wskazuje plik – zwracany jest JSON z metadanymi i zakodowaną zawartością (base64).",
+        "description": "Zwraca listę plików/folderów lub zawartość pliku (base64).",
         "parameters": [
           {
             "name": "owner",
@@ -55,65 +55,8 @@
         ],
         "responses": {
           "200": {
-            "description": "Zawartość pliku lub lista plików/folderów",
+            "description": "Zawartość katalogu lub pliku",
             "content": {
               "application/json": {
                 "schema": {
-                  "oneOf": [
-                    {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "name": {
-                            "type": "string"
-                          },
-                          "path": {
-                            "type": "string"
-                          },
-                          "type": {
-                            "type": "string",
-                            "enum": ["file", "dir"]
-                          },
-                          "download_url": {
-                            "type": "string"
-                          }
-                        }
-                      }
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "path": {
-                          "type": "string"
-                        },
-                        "type": {
-                          "type": "string",
-                          "enum": ["file"]
-                        },
-                        "content": {
-                          "type": "string",
-                          "description": "Base64 encoded content of the file"
-                        },
-                        "encoding": {
-                          "type": "string",
-                          "example": "base64"
-                        },
-                        "download_url": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+                  "type":
