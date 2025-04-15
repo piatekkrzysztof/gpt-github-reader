@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "GitHub Repo Reader",
+  "name_for_model": "githubRepoReader",
+  "description_for_human": "Przeglądaj pliki i foldery z publicznych repozytoriów GitHub.",
+  "description_for_model": "Umożliwia pobieranie struktury folderów oraz zawartości plików z publicznych repozytoriów GitHub.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://TWOJA-NAZWA.netlify.app/github-reader.yaml"
+  },
+  "logo_url": "https://avatars.githubusercontent.com/u/9919?s=200&v=4",
+  "contact_email": "kontakt@example.com",
+  "legal_info_url": "https://example.com/legal"
+}
